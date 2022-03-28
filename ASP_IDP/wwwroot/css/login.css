@@ -1,0 +1,30 @@
+﻿#content-area {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+}
+
+#login-box {
+    width: 550px;
+    background-color: #454545;
+    padding: 15px;
+    display: none;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.56);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.56);
+}
+
+#login-logo {
+    width: 100px;
+}
+
+.alert > ul {
+    margin: 0;
+}
+
+.validation-summary-valid {
+    display: none;
+}

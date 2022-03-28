@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "_DefaultLogin";
+}
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<br>
+<h5 class="text-centered">Willkommen im IDP</h5>
+<hr>
+<p class="text-centered">
+    Um den IDP zu benutzen, benötigen Sie einen gültigen Account. Bitte registrieren Sie sich mit dem nachfolgenden Formular.
+</p>
+
+<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
+    <div asp-validation-summary="All" class="alert alert-danger"></div>
+    <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input asp-for="Email" class="validate" />
+        <label asp-for="Email">E-Mail Adresse</label>
+    </div>
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <div class="input-field col s12">
+        <i class="material-icons prefix">lock</i>
+        <input asp-for="Password" class="validate" />
+        <label asp-for="Password">Kennwort</label>
+    </div>
+    <div class="input-field col s12">
+        <i class="material-icons prefix">lock</i>
+        <input asp-for="ConfirmPassword" class="validate" />
+        <label asp-for="ConfirmPassword">Kennwort bestätigen</label>
+    </div>
+    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    <div class="left">
+        <small><a asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]">Bereits registriert? Zurück zum Login!</a></small>
+    </div>
+    <div class="right">
+        <button class="btn waves-effect waves-light btn-block" type="submit" name="action">
+            Registrieren
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+</form>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

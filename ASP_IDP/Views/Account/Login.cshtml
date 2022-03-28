@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "_DefaultLogin";
+}
+@model LoginViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{ ViewData["Title"] = "Log in"; }
+
+<br>
+<h5 class="text-centered">Willkommen im IDP</h5>
+<hr>
+<p class="text-centered">
+    Um sich anmelden zu können, müssen Sie sich durch Eingabe Ihrer
+    Benutzerdaten autorisieren.
+</p>
+
+<form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
+    <div asp-validation-summary="All" class="alert alert-danger"></div>
+    <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input asp-for="Email" class="validate" />
+        <label asp-for="Email">E-Mail Adresse</label>
+    </div>
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <div class="input-field col s12">
+        <i class="material-icons prefix">lock</i>
+        <input asp-for="Password" class="validate" />
+        <label asp-for="Password">Kennwort</label>
+    </div>
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <br />
+    <p>
+        <label>
+            <input asp-for="RememberMe" type="checkbox" />
+            <span>Eingeloggt bleiben?</span>
+        </label>
+    </p>
+    <br />
+    <div class="left">
+        <small><a asp-action="Register" asp-route-returnUrl="@ViewData["ReturnUrl"]">Neu hier? Registriere dich!</a></small>
+    </div>
+    <div class="right">
+        <button class="btn waves-effect waves-light btn-block" type="submit" name="action">
+            Autorisieren
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+</form>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
