@@ -118,6 +118,13 @@ builder.Services.AddHostedService<TestData>();
 
 var app = builder.Build();
 
+//Automaticly migrate identity and openiddict databases
+using (var serviceScope = app.Services.CreateScope())
+{
+    var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    context.Database.Migrate();
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
