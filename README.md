@@ -1,9 +1,9 @@
-# ASP_IDP
+# ASP.NET identity provider
 
 This project is divided into three web services.
-- IDP
+- Identity provider (IDP)
 - Gateway
-- ResourceServer
+- Resource server
 
 ## IDP
 
@@ -17,7 +17,7 @@ The gateway web service uses [Ocelot](https://ocelot.readthedocs.io/en/latest/in
 Via the Ocelot web service the incoming requests are forwarded to the resource web services.
 Also, introspection against the IDP is used to check whether the client is authorized to make requests against the resource web services. If this is not the case, the requests are not forwarded.
 
-## ResourceServer
+## Resource server
 
 The ResourceServer contains the controller that makes requests against the resource databases.
 The responses are packaged in a JSON format and sent back to the client via the gateway server.
@@ -42,3 +42,7 @@ The tables are created automatically when the web services are started. It is im
 ![alt text](https://i.postimg.cc/L41wXyv0/Connectionstring.png)
 
 ![alt text](https://i.postimg.cc/7Ztb6YZ4/connectionstring-resourceserver.png)
+
+## Frontend project
+
+The frontend project which can login to the IDP and fetch data from the resource server was written in Angular and can be fetched [here](https://github.com/FaMouZx3/Angular-IDP). This project is not a high end frontend project but only serves as a test project for the IDP web service.
